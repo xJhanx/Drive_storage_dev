@@ -4,7 +4,8 @@ import { envs } from './config/env-pluggin';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  console.log("server running in port : ",envs.port);
+  app.setGlobalPrefix("api");
   await app.listen(envs.port);
+  console.log("server running in port : ",envs.port);
 }
 bootstrap();
