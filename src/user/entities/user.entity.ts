@@ -1,7 +1,10 @@
+import { RolEntity } from 'src/rol/Entities/Rol.entiti';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -27,6 +30,9 @@ export class UserEntity {
   @Column()
   gender : string;
 
+  @OneToOne(() => RolEntity)
+  @JoinColumn()
+  rol : RolEntity;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: string;
